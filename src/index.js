@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 getLocation = () => {
-  fetch(endpoint.LOCATION_URL)
+  const {BASE_URL, LOCATION_URL} = endpoint
+  fetch(BASE_URL + LOCATION_URL)
     .then(resp => resp.json())
     .then(json => {
       let header = document.getElementById('header').innerText = 'WEATHER FORECAST FOR ' + json.city.toUpperCase()
@@ -13,7 +14,8 @@ getLocation = () => {
 }
 
 getWeather = () => {
-  fetch(endpoint.FULL_API_URL)
+  const {BASE_URL, ZIP_DATE_URL} = endpoint
+  fetch(BASE_URL + ZIP_DATE_URL)
     .then(resp => resp.json())
     .then(json => {
       console.log(json);
