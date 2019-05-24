@@ -1,0 +1,50 @@
+* {
+  font-family: Helvetica;
+}
+
+#header {
+  text-align: center;
+  color: rgba(123, 123, 128,1);
+}
+
+#container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0% 20%;
+}
+
+.box {
+  width: 32%;
+}
+
+.weather-header {
+  text-align: left;
+}
+
+.day {
+  background-color: rgba(109, 155, 186, 1);
+}
+
+h3 {
+  color: #fff;
+  padding: 0.45rem 0.45rem;
+  font-size: 1rem;
+}
+
+.weather-icon {
+  height: 2.25rem;
+  width: auto;
+}
+
+#icon-div {
+  display: inline-block;
+}
+
+#detail-div-2 {
+  display: inline-block;
+  margin-left: 1.75rem;
+}
+
+.detail-info {
+  margin-bottom: 0.5rem;
+}
