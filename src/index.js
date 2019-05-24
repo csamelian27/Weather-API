@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("hi", endpoint);
+  console.log("hi");
   getLocation()
   getWeather()
 })
@@ -75,12 +75,3 @@ displayWeather = (weatherData) => {
     detailDiv2.append(detailInfo, highLow)
   })
 }
-
-
-
-
-
-
-
-
-//
