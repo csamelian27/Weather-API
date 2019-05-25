@@ -1,37 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-  getLocation();
-  getWeather();
+  location.replace('/Users/CassSam/Development/Random%20code/Movable_Ink_Code_Challenge/index.html#geo?zip_code=11226&date=05/25/2018')
 })
 
-window.addEventListener("hashchange", async () => {
+window.addEventListener("hashchange", () => {
   console.log('hash change');
   let container = document.querySelector('#container')
-  let header = document.querySelector('#header')
   container.innerHTML = ""
-  header.innerText = ""
-  await getLocation()
-  await getWeather()
+  getLocation()
+  getWeather()
 }, false)
 
-getLocation = async () => {
-  let info = await locationHashChanged();
-  console.log(locationHashChanged())
+getLocation = () => {
+  let info = locationHashChanged();
+  const header = document.getElementById("header");
   fetch(info.place)
     .then(resp => resp.json())
     .then(json => {
-      console.log("working")
-      console.log(json.city);
-      displayLocation(json.city.toUpperCase())
+      console.log("working", json.city)
+      header.innerHTML = 'WEATHER FORECAST FOR ' + json.city.toUpperCase()
     })
 }
 
-displayLocation = (location) => {
-  const header = document.getElementById("header");
-  header.innerHTML = 'WEATHER FORECAST FOR ' + location
-}
-
-getWeather = async () => {
-  let info = await locationHashChanged();
+getWeather = () => {
+  let info = locationHashChanged();
   fetch(info.endpoint)
     .then(resp => resp.json())
     .then(json => {
@@ -45,11 +36,11 @@ displayWeather = (weatherData) => {
     let box = document.createElement('div')
     box.className = 'box'
 
-    let weatherHeader = document.createElement('h3')
-    weatherHeader.className = 'day'
     let content = document.body.textContent || document.body.innerText;
     let hasText = content.indexOf("Today: ")!==-1;
     let hasText2 = content.indexOf("Thursday: ")!==-1;
+    let weatherHeader = document.createElement('h3')
+    weatherHeader.className = 'day'
     if (hasText2) {
       weatherHeader.innerText = 'Friday: ';
     } else if(hasText) {
@@ -73,6 +64,7 @@ displayWeather = (weatherData) => {
 
     let detailDiv2 = document.createElement('div')
     detailDiv2.id = 'detail-div-2'
+    
     let iconDiv = document.createElement('div')
     iconDiv.id = 'icon-div'
 
