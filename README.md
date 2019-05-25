@@ -9,3 +9,5 @@
 1. The browser will default to a zip_code of 11226 upon opening. In order to grab the weather forecast for another location, you must manually alter the 5 digit zip/postal code included in the URI. Where you see 'index.html#geo?zip_code=11226&date=05/25/2018', simply highlight the '11226' and pass in any other valid 5 digit code to receive instantly updated forecasting for that location!
 2. The same information applies if you would like to search the forecast for a different date. Again, simply highlight the '05/25/2018' from 'index.html#geo?zip_code=11226&date=05/25/2018' and pass in any other date in the MM/DD/YYYY format.
 3. If you were to accidentally remove pertinent information from the URI, you will be rerouted to a blank page. In order to return to the working URI, refresh the page and you'll be brought back to the default location and date settings to begin again!
+
+Created by Cassidy Samelian
