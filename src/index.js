@@ -1,32 +1,46 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("hi");
-  getLocation()
-  getWeather()
+  getLocation();
+  getWeather();
 })
 
-getLocation = () => {
-  const {BASE_URL, LOCATION_URL} = endpoint
-  fetch(BASE_URL + LOCATION_URL)
+window.addEventListener("hashchange", async () => {
+  console.log('hash change');
+  let container = document.querySelector('#container')
+  let header = document.querySelector('#header')
+  container.innerHTML = ""
+  header.innerText = ""
+  await getLocation()
+  await getWeather()
+}, false)
+
+getLocation = async () => {
+  let info = await locationHashChanged();
+  console.log(locationHashChanged())
+  fetch(info.place)
     .then(resp => resp.json())
     .then(json => {
-      let header = document.getElementById('header').innerText = 'WEATHER FORECAST FOR ' + json.city.toUpperCase()
+      console.log("working")
+      console.log(json.city);
+      displayLocation(json.city.toUpperCase())
     })
 }
 
-getWeather = () => {
-  const {BASE_URL, ZIP_DATE_URL} = endpoint
-  fetch(BASE_URL + ZIP_DATE_URL)
+displayLocation = (location) => {
+  const header = document.getElementById("header");
+  header.innerHTML = 'WEATHER FORECAST FOR ' + location
+}
+
+getWeather = async () => {
+  let info = await locationHashChanged();
+  fetch(info.endpoint)
     .then(resp => resp.json())
     .then(json => {
-      console.log(json);
       displayWeather(json.daily.data.slice(0,3))
     })
 }
 
 displayWeather = (weatherData) => {
-  console.log(weatherData);
   weatherData.forEach(day => {
-    console.log(day);
     let container = document.getElementById('container')
     let box = document.createElement('div')
     box.className = 'box'
