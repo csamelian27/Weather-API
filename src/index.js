@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  location.replace('/Users/CassSam/Development/Random%20code/Movable_Ink_Code_Challenge/index.html#geo?zip_code=11226&date=05/25/2018')
+  console.log(location);
+  location.replace(`${location.href}#geo?zip_code=11226&date=05/25/2018`)
 })
 
 window.addEventListener("hashchange", () => {
@@ -64,7 +65,7 @@ displayWeather = (weatherData) => {
 
     let detailDiv2 = document.createElement('div')
     detailDiv2.id = 'detail-div-2'
-    
+
     let iconDiv = document.createElement('div')
     iconDiv.id = 'icon-div'
 
